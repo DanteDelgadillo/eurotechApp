@@ -1,0 +1,32 @@
+{
+  "name": "eurotechshop",
+  "version": "1.0.0",
+  "description": "myapp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanteDelgadillo/eurotechApp.git"
+  },
+  "author": "Dante Delgadillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanteDelgadillo/eurotechApp/issues"
+  },
+  "homepage": "https://github.com/DanteDelgadillo/eurotechApp#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "joi": "^13.4.0",
+    "mongodb": "^3.0.10",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5"
+  }
+}
