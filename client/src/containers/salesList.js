@@ -12,7 +12,7 @@ class SalesList extends React.Component {
       show: false
     };
 
-    this.passId = this.passId.bind(this);
+    // this.passId = this.passId.bind(this);
     this.handleHide = this.handleHide.bind(this);
   }
 
@@ -20,7 +20,7 @@ class SalesList extends React.Component {
     this.setState({ show: false });
   }
 
-  passId() {}
+  // passId() {}
 
   componentDidMount() {
     CustomerCarFormService.getAll()
@@ -28,6 +28,7 @@ class SalesList extends React.Component {
         this.setState({
           activeItems: response.items
         });
+        console.log("ReadAll articles good", this.state.activeItems);
       })
       .catch(() => {
         console.log("ReadAll articles error");

@@ -7,6 +7,8 @@ import "./App.css";
 import SalesPg from "./components/SalesPg";
 import EstimatePg from "./components/EstimatePg";
 import SalesForm from "./components/SalesForm";
+import AddNewCustomerPg from "./components/AddNewCustomerPg";
+import NewSalePage from "./components/NewSalePage";
 class App extends Component {
   render() {
     return (
@@ -17,6 +19,8 @@ class App extends Component {
             <Route path="/Sales" component={SalesPg} />
             <Route path="/Estimate" component={EstimatePg} />
             <Route path="/NewSales" component={SalesForm} />
+            <Route path="/AddNewCustomerPg" component={AddNewCustomerPg} />
+            <Route path="/NewSalePage" component={NewSalePage} />
           </div>
         </BrowserRouter>
       </React.Fragment>

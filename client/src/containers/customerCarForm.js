@@ -17,8 +17,6 @@ class CustomerCarForm extends React.Component {
     this.onSave = this.onSave.bind(this);
     // this.onDelete = this.onDelete.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-    this.formEl = React.createRef();
   }
   initializeForm = customerInfo => ({
     lastName: "",
@@ -89,67 +87,6 @@ class CustomerCarForm extends React.Component {
     }, this.validateForm);
   };
 
-  // ******************************Valadation******************************
-  submitHandler = e => {
-    e.preventDefault();
-
-    if (this.formEl.current.checkValidity()) {
-      this.onSave(e);
-    }
-
-    this.validateForm();
-    this.setState({ hasBeenValidated: true });
-  };
-
-  validateForm = () => {
-    this.setErrorMessages();
-  };
-
-  setErrorMessages = () => {
-    const errorMessages = {};
-    const formEl = this.formEl.current;
-
-    if (formEl) {
-      const formLen = formEl.length;
-
-      for (let i = 0; i < formLen; i++) {
-        const input = formEl[i];
-
-        if (input.name) {
-          const [mainName, propName, index] = input.name.split("-");
-          if (propName) {
-            if (
-              !errorMessages[mainName] ||
-              errorMessages[mainName].length < parseInt(index, 10) + 1
-            ) {
-              const obj = { [propName]: input.validationMessage };
-              errorMessages[mainName] = errorMessages[mainName]
-                ? errorMessages[mainName].concat(obj)
-                : [obj];
-            } else {
-              errorMessages[mainName][index][propName] =
-                input.validationMessage;
-            }
-          } else {
-            errorMessages[mainName] = input.validationMessage;
-          }
-        }
-      }
-
-      this.setState({ errorMessages });
-    }
-  };
-
-  renderClassNames = (inputName, baseClass = "input") =>
-    this.state.hasBeenValidated && this.state.errorMessages[inputName]
-      ? `${baseClass} state-error`
-      : `${baseClass}`;
-
-  renderErrorMsgs = inputName =>
-    this.state.hasBeenValidated && this.state.errorMessages[inputName] ? (
-      <em className="invalid">{this.state.errorMessages[inputName]}</em>
-    ) : null;
-
   // **************************************************************************************
   render() {
     const title = (
@@ -162,7 +99,6 @@ class CustomerCarForm extends React.Component {
         <div className="col-sm-offset-2 col-sm-7">
           <FormPanel title={title}>
             <form
-              ref={this.formEl}
               onSubmit={this.submitHandler}
               className="smart-form"
               noValidate
