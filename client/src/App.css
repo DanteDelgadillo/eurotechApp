@@ -32,11 +32,19 @@
 }
 /* ************************************************************************ */
 
-table {
+/* table {
   border-collapse: collapse;
   width: 45%;
 }
 
 td {
   padding: 10px;
+} */
+/* *************************Background******************** */
+.BackGround {
+  display: block;
+
+  padding: 0;
+  width: 100%;
+  margin-top: -20px;
 }

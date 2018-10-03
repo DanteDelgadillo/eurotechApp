@@ -1,14 +1,18 @@
 import React from "react";
 import * as AllCustomerInfoService from "../services/AllCustomerInfo.service";
-// import NewSalePageCarsList from "../containers/newSalePageCarsList";
+import { Modal } from "react-bootstrap";
+import ModalAddNewCarInCustomerFile from "../containers/modalAddNewCarInCustomerFile";
 
 class NewSalesPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       activeItems: [],
-      customerCars: ""
+      customerCar: [],
+      show: false
     };
+    this.handleHide = this.handleHide.bind(this);
+    // this.onAdd = this.onAdd.bind(this);
   }
 
   componentDidMount() {
@@ -24,10 +28,14 @@ class NewSalesPage extends React.Component {
       });
   }
 
+  handleHide() {
+    this.setState({ show: false });
+  }
+
   render() {
     return (
       <React.Fragment>
-        <table>
+        <table className="col col-sm-5">
           <tbody>
             <tr>
               <th>Name</th>
@@ -41,9 +49,8 @@ class NewSalesPage extends React.Component {
                   key={item._id}
                   onClick={() => {
                     this.setState({
-                      customerCars: item.cars
+                      customerCar: item.cars
                     });
-                    console.log(item.cars);
                   }}
                 >
                   <td>{item.lastName + " " + item.firstName}</td>
@@ -55,8 +62,8 @@ class NewSalesPage extends React.Component {
             })}
           </tbody>
         </table>
-        {/* <NewSalePageCarsList customerCars={this.state.customerCars} /> */}
-        {/* <table>
+
+        <table className="col col-sm-5">
           <tbody>
             <tr>
               <th>LP</th>
@@ -64,8 +71,56 @@ class NewSalesPage extends React.Component {
               <th>Model</th>
               <th>Vin</th>
             </tr>
+            <tr />
+            {this.state.customerCar.map(item => {
+              return (
+                <tr
+                  key={item._id}
+                  // onClick={() => {
+                  //   this.setState({
+                  //     customerId: item._id,
+                  //   });
+                  // }}
+                >
+                  <td>{item.lp}</td>
+                  <td>{item.year}</td>
+                  <td>{item.model}</td>
+                  <td>{item.vin}</td>
+                </tr>
+              );
+            })}
           </tbody>
-        </table> */}
+        </table>
+        <button
+          type="button"
+          className="btn btn-primary btn-xs pull-right"
+          onClick={() => {
+            this.setState({
+              show: true
+            });
+          }}
+        >
+          Add New Car
+        </button>
+        <div className="modal-container">
+          <Modal
+            show={this.state.show}
+            onHide={this.handleHide}
+            container={this}
+            aria-labelledby="contained-modal-title"
+            bsSize="lg"
+          >
+            <Modal.Body>
+              <div>
+                <ModalAddNewCarInCustomerFile />
+                <h1>h1</h1>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <button onClick={this.handleHide}>Close</button>
+            </Modal.Footer>
+          </Modal>
+        </div>
       </React.Fragment>
     );
   }

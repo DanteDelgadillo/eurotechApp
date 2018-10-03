@@ -10,19 +10,21 @@ class EstimatePg extends React.Component {
     return (
       <React.Fragment>
         <table>
-          <tr>
-            <th>N.O</th>
-            <th>Writer</th>
-            <th>Name</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>LP</th>
-            <th>Unit</th>
-            <th>Open</th>
-            <th>Status</th>
-            <th>Total</th>
-          </tr>
+          <tbody>
+            <tr>
+              <th>N.O</th>
+              <th>Writer</th>
+              <th>Name</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>LP</th>
+              <th>Unit</th>
+              <th>Open</th>
+              <th>Status</th>
+              <th>Total</th>
+            </tr>
+          </tbody>
         </table>
       </React.Fragment>
     );

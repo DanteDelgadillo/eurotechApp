@@ -1,4 +1,6 @@
 import React from "react";
+import * as AllCustomerInfoService from "../services/AllCustomerInfo.service";
+
 class NewSalePageCarsList extends React.Component {
   constructor(props) {
     super(props);
@@ -7,6 +9,20 @@ class NewSalePageCarsList extends React.Component {
     };
     // this.save= this.save.bind(this);
     console.log("sfs", this.state.props);
+  }
+  componentwillMount(props) {
+    AllCustomerInfoService.readById(this.props.customerId)
+      .then(data => {
+        this.setState({
+          formData: data.item
+        });
+
+        console.log("Success!");
+        console.log("x", this.state.formData);
+      })
+      .catch(error => {
+        console.log("Failure:", error);
+      });
   }
 
   render() {

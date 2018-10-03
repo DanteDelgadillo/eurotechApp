@@ -37,7 +37,7 @@ class SalesList extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <table>
+        <table className="col col-sm-8" style={{ textAlign: "center" }}>
           <tbody>
             <tr>
               <th>N.O</th>
